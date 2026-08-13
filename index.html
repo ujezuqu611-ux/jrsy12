@@ -22317,6 +22317,15 @@ filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 
+
+    <!-- PWA 配置 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="jrsy">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
 </head>
 <body>
 
@@ -30723,7 +30732,19 @@ filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
     </div>
 </div>
 
-<!-- 放在 </body> 标签之前 -->
+<!-- 放在 
+    <!-- PWA Service Worker 注册 -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then((reg) => console.log('PWA Service Worker 注册成功:', reg.scope))
+                .catch((err) => console.log('PWA Service Worker 注册失败:', err));
+        });
+    }
+    </script>
+
+</body> 标签之前 -->
 <div id="installGuideModal" class="modal">
     <div class="modal-content" style="text-align: center;">
         <div class="modal-title">安装全屏版 jrsy</div>
